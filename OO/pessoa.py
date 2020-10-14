@@ -18,4 +18,7 @@ if __name__ == '__main__':
     print(simone.idade)
     for filho in simone.filhos:
         print(filho.nome)
-
+    simone.sobrenome = 'Santos' #atributo dinamico
+    del simone.filhos #deletar atributo dinamico
+    print(simone.__dict__) #permite acessar os atributos
+    print(leticia.__dict__)
