@@ -1,17 +1,21 @@
 class Pessoa:
-    def __init__(self, nome=None, idade=35):
+    def __init__(self, *filhos, nome=None, idade=39): #atributos
         self.idade = idade
         self.nome = nome
+        self.filhos = list(filhos) #atributo complexo
 
     def cumprimentar(self):
         return f'Olá{id(self)}'
 
+
 if __name__ == '__main__':
-    p = Pessoa('Luciana')
-    print(Pessoa.cumprimentar(p))
-    print(id(p))
-    print(p.cumprimentar()) #forma usual
-    print(p.nome)
-    p.nome = 'Renzo'
-    print(p.nome)
-    print(p.idade)
+    leticia = Pessoa(nome='Leticia')
+    simone = Pessoa(leticia, nome='Simone')
+    print(Pessoa.cumprimentar(simone))
+    print(id(simone))
+    print(simone.cumprimentar()) #forma usual
+    print(simone.nome)
+    print(simone.idade)
+    for filho in simone.filhos:
+        print(filho.nome)
+
