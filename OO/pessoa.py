@@ -1,5 +1,8 @@
 class Pessoa:
-    def __init__(self, *filhos, nome=None, idade=39): #atributos
+    #atributos de classe = ser criado quando for comum a todos os objetos
+    #atributos de instancia = ser criado quando cada objeto tiver um valor especifico
+    olhos = 2 #atributo de classe
+    def __init__(self, *filhos, nome=None, idade=39): #atributos de instancia
         self.idade = idade
         self.nome = nome
         self.filhos = list(filhos) #atributo complexo
@@ -22,3 +25,8 @@ if __name__ == '__main__':
     del simone.filhos #deletar atributo dinamico
     print(simone.__dict__) #permite acessar os atributos
     print(leticia.__dict__)
+    leticia.olhos = 3
+    print(Pessoa.olhos)
+    print(simone.olhos)
+    print(leticia.olhos)
+    print(id(Pessoa.olhos), id(simone.olhos), id(leticia.olhos))
