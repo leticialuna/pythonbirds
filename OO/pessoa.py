@@ -8,12 +8,27 @@ class Pessoa:
         self.filhos = list(filhos) #atributo complexo
 
     def cumprimentar(self):
-        return f'Olá{id(self)}'
+        return f'Olá, meu nome é {self.nome}'
 
+    @staticmethod #decorator
+    def metodo_estatico():
+        return 42
+
+    @classmethod #metodo de classe
+    def nome_e_atributos_de_classe(cls):
+        return f'{cls} - olhos{cls.olhos}'
+
+class Mulher(Pessoa): #herança simples -> herda os atributos da classe Pai
+    def cumprimentar(self):
+        cumprimentar_da_classe=super().cumprimentar()
+        return f'{cumprimentar_da_classe}. Aperto de mão'
+
+class Mutante(Pessoa):
+    olhos = 3 #sobrescrita de atributo de classe
 
 if __name__ == '__main__':
-    leticia = Pessoa(nome='Leticia')
-    simone = Pessoa(leticia, nome='Simone')
+    leticia = Mutante(nome='Leticia') #herança
+    simone = Mulher(leticia, nome='Simone') #herança
     print(Pessoa.cumprimentar(simone))
     print(id(simone))
     print(simone.cumprimentar()) #forma usual
@@ -25,8 +40,16 @@ if __name__ == '__main__':
     del simone.filhos #deletar atributo dinamico
     print(simone.__dict__) #permite acessar os atributos
     print(leticia.__dict__)
-    leticia.olhos = 3
     print(Pessoa.olhos)
     print(simone.olhos)
     print(leticia.olhos)
     print(id(Pessoa.olhos), id(simone.olhos), id(leticia.olhos))
+    print(Pessoa.metodo_estatico(), simone.metodo_estatico())
+    print(Pessoa.nome_e_atributos_de_classe(), simone.nome_e_atributos_de_classe())
+    print(isinstance(Pessoa, Pessoa)) #herança
+    print(isinstance(Pessoa, Mulher)) #herança
+    print(isinstance(leticia, Pessoa)) #herança
+    print(isinstance(leticia, Mulher)) #herança
+    print(leticia.olhos)
+    print(leticia.cumprimentar())
+    print(simone.cumprimentar())
