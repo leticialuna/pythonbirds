@@ -65,6 +65,7 @@ class Obstaculo(Ator):
 
 class Porco(Ator):
     _caracter_ativo = '@'
+    _caracter_destruido = '+'
 
 
 class DuploLancamentoExcecao(Exception):
@@ -141,3 +142,8 @@ class PassaroAmarelo(Passaro):
 
 class PassaroVermelho(Passaro):
     _caracter_ativo = 'V' #sobrescrita do atributo de classe
+    _caracter_destruido = 'v'
+    velocidade_escalar = 20
+
+#Classe Passaro herda atributos da classe Ator.
+# Classe PassaroAmarelo e PassaroVermelho herdam atributos em comum da classe Passaros.
